@@ -40,7 +40,7 @@ module.exports = () =>
         module: {
             rules: [
                 {
-                    test: /\.css$/i,
+                    test: /\.css|.scss$/i,
                     use: [
                         {
                             loader: MiniCssExtractPlugin.loader,
