@@ -1,4 +1,5 @@
 .prettierignore
+.eslintignore
 .DS_Store
 .editorconfig
 .gitignore
@@ -7,5 +8,6 @@
 package-lock.json
 coverage/
 clientlib/
+assets/fonts/
 dynamicObject.groovy
 sonar-project.properties
