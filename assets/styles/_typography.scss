@@ -1,0 +1,15 @@
+/* brand variables */
+
+@mixin regular-text {
+    font-weight: normal;
+    font-size: 14px;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-style: normal;
+    line-height: 24px;
+}
+
+
+/* layout variables */
+%tag-font {
+    @include regular-text;
+}

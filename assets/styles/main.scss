@@ -1,0 +1,14 @@
+@import 'fonts';
+@import '_colors';
+@import '_typography';
+
+@import './emails-input';
+
+
+body {
+    font-family: 'OpenSans-Regular', sans-serif;
+}
+
+.parent {
+    width: 440px;
+}
