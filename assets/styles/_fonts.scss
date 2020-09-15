@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-weight: normal;
+    font-family: 'Iconmoon';
+    font-style: normal;
+    font-display: block;
+    src: url('../fonts/icomoon.ttf') format('truetype');
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    display: inline-block;
+    font-weight: normal;
+    font-size: 8px;
+    font-family: 'Iconmoon', sans-serif !important;
+    speak: never;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 8px;
+    text-transform: none;
+
+    &::before {
+        display: inline-block;
+    }
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-remove {
+    &:before {
+        color: $color-blue-700;
+        content: '\e900';
+    }
+}
