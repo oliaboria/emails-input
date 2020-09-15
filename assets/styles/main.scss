@@ -1,12 +1,8 @@
-@import 'fonts';
 @import '_colors';
+@import '_fonts';
 @import '_typography';
 
-@import './emails-input';
-
-body {
-    font-family: 'OpenSans-Regular', sans-serif;
-}
+@import './_emails-input';
 
 .parent {
     width: 440px;

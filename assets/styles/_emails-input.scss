@@ -1,24 +1,47 @@
 .emails-input {
+    @include regular-text;
+
     height: 96px;
     padding: 8px;
+    overflow-y: auto;
     border: 1px solid $color-gray-400;
     border-radius: 4px;
 
-    .tags {
-        @extend %tag-font;
-
+    .email-list-item {
         display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 4px;
+
+        &.valid {
+            padding: 0 8px;
+            background-color: $color-blue-100;
+            border-radius: 100px;
+        }
+
+        &.invalid {
+            border-bottom: 1px dashed $color-red-500;
+        }
+
+        .email {
+            padding-right: 5px;
+        }
+
+        .icon-remove {
+            vertical-align: middle;
+        }
     }
 
-    .email {
-        background-color: $color-blue-100;
-    }
+    .email-add-more {
+        @include regular-text;
 
-    input {
         display: inline-block;
         background-color: transparent;
         border: none;
         outline: none;
         box-shadow: none;
+
+        &::placeholder {
+            color: $color-gray-400;
+        }
     }
 }

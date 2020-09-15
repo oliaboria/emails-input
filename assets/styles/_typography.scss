@@ -1,5 +1,3 @@
-/* brand variables */
-
 @mixin regular-text {
     font-weight: normal;
     font-size: 14px;
@@ -8,7 +6,3 @@
     line-height: 24px;
 }
 
-/* layout variables */
-%tag-font {
-    @include regular-text;
-}
