@@ -67,9 +67,17 @@ class EmailsInput {
         this.listEl.appendChild(el);
     }
 
-    onContainerClick(e: Event) {
+    onContainerClick(e: MouseEvent) {
         if (e.target === this.containerEl) {
             this.inputEl.focus();
+        }
+    }
+
+    removeEmail(e: MouseEvent) {
+        const target = e.target as Element;
+
+        if (target.classList.contains('icon-remove')) {
+            this.listEl.removeChild(target.parentNode);
         }
     }
 
@@ -84,7 +92,7 @@ class EmailsInput {
         }
     }
 
-    onBlur(e: Event) {
+    onBlur(e: FocusEvent) {
         this.addEmail(this.inputEl.value);
         this.inputEl.value = '';
     }
@@ -97,6 +105,8 @@ class EmailsInput {
             'click',
             this.onContainerClick.bind(this),
         );
+
+        this.listEl.addEventListener('click', this.removeEmail.bind(this));
     }
 }
 
