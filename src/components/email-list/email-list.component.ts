@@ -24,6 +24,10 @@ class EmailList {
         this.element.appendChild(emailEl);
     }
 
+    getEmailsCount(): number {
+        return this.element.children.length;
+    }
+
     private removeEmail(e: MouseEvent): void {
         const target = e.target as Element;
 

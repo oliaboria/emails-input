@@ -33,11 +33,15 @@ class EmailsInput {
         return this.containerEl;
     }
 
-    private addEmail(value: string): void {
+    addEmail(value: string): void {
         if (!value) return;
 
         this.emailList.addEmail(value);
         this.inputEl.value = '';
+    }
+
+    getEmailsCount(): number {
+        return this.emailList.getEmailsCount();
     }
 
     private onContainerClick(e: MouseEvent): void {
