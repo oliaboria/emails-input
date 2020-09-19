@@ -1,7 +1,7 @@
 .emails-input {
     @include regular-text;
 
-    height: 96px;
+    height: 100%;
     padding: 8px;
     overflow-y: auto;
     background-color: $white;
