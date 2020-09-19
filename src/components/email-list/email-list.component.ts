@@ -1,6 +1,5 @@
 import EmailListItem from '../email-list-item';
 
-const EMAIL_LIST_CLASSNAME = 'email-list-item';
 const REMOVE_CLASSNAME = 'icon-remove';
 
 class EmailList {
@@ -15,8 +14,6 @@ class EmailList {
     // eslint-disable-next-line class-methods-use-this
     private render(): HTMLElement {
         const el = document.createElement('span');
-
-        el.classList.add(EMAIL_LIST_CLASSNAME);
 
         return el;
     }
