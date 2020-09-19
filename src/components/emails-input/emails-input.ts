@@ -6,7 +6,7 @@ class EmailsInput {
     private root: HTMLElement;
     private containerEl: HTMLElement;
     private emailList: EmailList;
-    private inputEl: any;
+    private inputEl: HTMLInputElement;
 
     constructor(root: HTMLElement) {
         this.root = root;
@@ -33,35 +33,33 @@ class EmailsInput {
         return this.containerEl;
     }
 
-    addEmail(value: string): void {
+    private addEmail(value: string): void {
         if (!value) return;
 
         this.emailList.addEmail(value);
+        this.inputEl.value = '';
     }
 
-    onContainerClick(e: MouseEvent) {
+    private onContainerClick(e: MouseEvent): void {
         if (e.target === this.containerEl) {
             this.inputEl.focus();
         }
     }
 
-    onKeydown(e: KeyboardEvent) {
+    private onKeydown(e: KeyboardEvent): void {
         if (e.key === ',') {
             const email = this.inputEl.value.slice(0, -1);
             this.addEmail(email);
-            this.inputEl.value = '';
         } else if (e.key === 'Enter') {
             this.addEmail(this.inputEl.value);
-            this.inputEl.value = '';
         }
     }
 
-    onBlur(e: FocusEvent) {
+    private onBlur(): void {
         this.addEmail(this.inputEl.value);
-        this.inputEl.value = '';
     }
 
-    subscribe() {
+    private subscribe(): void {
         this.inputEl.addEventListener('keyup', this.onKeydown.bind(this));
         this.inputEl.addEventListener('blur', this.onBlur.bind(this));
 
