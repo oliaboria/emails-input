@@ -1,19 +1,14 @@
+import EmailListItem from '../email-list-item';
+
 class EmailsInput {
     private root: HTMLElement;
-
     private containerEl: HTMLElement;
-
     private listEl: HTMLElement;
-
     private inputEl: any;
-
     private state: any;
 
     constructor(root: HTMLElement) {
         this.root = root;
-        this.state = {
-            emailList: [],
-        };
 
         this.render();
         this.queryElements();
@@ -29,13 +24,6 @@ class EmailsInput {
         `;
     }
 
-    static emailMarkup(email: string) {
-        return `
-                <span class="email">${email}</span>
-                <span class="icon-remove"></span>
-        `;
-    }
-
     render() {
         this.root.innerHTML = EmailsInput.markup();
     }
@@ -46,25 +34,12 @@ class EmailsInput {
         this.inputEl = this.root.querySelector('.email-add-more');
     }
 
-    static isEmailValid(email: string): boolean {
-        const regexp = /\S+@\S+\.\S+/;
-
-        return regexp.test(email.toLowerCase());
-    }
-
-    addEmail(value: string) {
+    addEmail(value: string): void {
         if (!value) return;
 
-        const el = document.createElement('span');
+        const emailEl = new EmailListItem(value).element;
 
-        const validationClass = EmailsInput.isEmailValid(value)
-            ? 'valid'
-            : 'invalid';
-        el.classList.add('email-list-item');
-        el.classList.add(validationClass);
-
-        el.innerHTML = EmailsInput.emailMarkup(value);
-        this.listEl.appendChild(el);
+        this.listEl.appendChild(emailEl);
     }
 
     onContainerClick(e: MouseEvent) {
