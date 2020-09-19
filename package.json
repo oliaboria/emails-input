@@ -2,7 +2,7 @@
     "name": "emails-input",
     "version": "1.0.0",
     "description": "Package provides input for multiple emails",
-    "main": "index.ts",
+    "main": "src/index.ts",
     "scripts": {
         "start": "webpack-dev-server --config=./webpack/webpack.dev.js",
         "build:dev": "webpack --config=./webpack/webpack.dev.js",
