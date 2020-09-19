@@ -1,58 +1,47 @@
-import EmailListItem from '../email-list-item';
+import EmailList from '../email-list';
+
+const CONTAINER_CLASSNAME = 'emails-input';
 
 class EmailsInput {
     private root: HTMLElement;
     private containerEl: HTMLElement;
-    private listEl: HTMLElement;
+    private emailList: EmailList;
     private inputEl: any;
-    private state: any;
 
     constructor(root: HTMLElement) {
         this.root = root;
 
-        this.render();
-        this.queryElements();
+        this.root.appendChild(this.render());
         this.subscribe();
     }
 
-    static markup() {
-        return `
-            <div class="emails-input">
-                <span class="email-list"></span>
-                <input class="email-add-more" type="email" placeholder="add more people" />
-            <div>
-        `;
-    }
+    render(): HTMLElement {
+        this.containerEl = document.createElement('div');
+        this.containerEl.classList.add(CONTAINER_CLASSNAME);
 
-    render() {
-        this.root.innerHTML = EmailsInput.markup();
-    }
+        this.emailList = new EmailList();
 
-    queryElements() {
-        this.containerEl = this.root.querySelector('.emails-input');
-        this.listEl = this.root.querySelector('.email-list');
-        this.inputEl = this.root.querySelector('.email-add-more');
+        this.containerEl.appendChild(this.emailList.element);
+
+        this.inputEl = document.createElement('input');
+        this.inputEl.classList.add('email-add-more');
+        this.inputEl.setAttribute('type', 'email');
+        this.inputEl.setAttribute('placeholder', 'add more people');
+
+        this.containerEl.appendChild(this.inputEl);
+
+        return this.containerEl;
     }
 
     addEmail(value: string): void {
         if (!value) return;
 
-        const emailEl = new EmailListItem(value).element;
-
-        this.listEl.appendChild(emailEl);
+        this.emailList.addEmail(value);
     }
 
     onContainerClick(e: MouseEvent) {
         if (e.target === this.containerEl) {
             this.inputEl.focus();
-        }
-    }
-
-    removeEmail(e: MouseEvent) {
-        const target = e.target as Element;
-
-        if (target.classList.contains('icon-remove')) {
-            this.listEl.removeChild(target.parentNode);
         }
     }
 
@@ -80,8 +69,6 @@ class EmailsInput {
             'click',
             this.onContainerClick.bind(this),
         );
-
-        this.listEl.addEventListener('click', this.removeEmail.bind(this));
     }
 }
 
