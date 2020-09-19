@@ -1,4 +1,3 @@
-import './index.scss';
 import '../assets/styles/main.scss';
 
-console.log('Hello world');
+export { default } from './components/emails-input';
