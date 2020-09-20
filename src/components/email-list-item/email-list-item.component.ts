@@ -1,8 +1,10 @@
+import IComponent from '../../types';
+
 const VALID_EMAIL_CLASSNAME = 'valid';
 const INVALID_EMAIL_CLASSNAME = 'invalid';
 const EMAIL_CLASSNAME = 'email-list-item';
 
-class EmailListItem {
+class EmailListItem implements IComponent {
     private email: string;
 
     element: HTMLElement;
@@ -20,7 +22,7 @@ class EmailListItem {
         `;
     }
 
-    private render(): HTMLElement {
+    render(): HTMLElement {
         const el = document.createElement('span');
 
         const validationClass = this.isEmailValid()

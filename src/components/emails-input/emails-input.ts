@@ -1,12 +1,14 @@
+import IComponent from '../../types';
 import EmailList from '../email-list';
 
 const CONTAINER_CLASSNAME = 'emails-input';
 
-class EmailsInput {
+class EmailsInput implements IComponent {
     private root: HTMLElement;
-    private containerEl: HTMLElement;
     private emailList: EmailList;
     private inputEl: HTMLInputElement;
+
+    element: HTMLElement;
 
     constructor(root: HTMLElement) {
         this.root = root;
@@ -15,42 +17,8 @@ class EmailsInput {
         this.subscribe();
     }
 
-    render(): HTMLElement {
-        this.containerEl = document.createElement('div');
-        this.containerEl.classList.add(CONTAINER_CLASSNAME);
-
-        this.emailList = new EmailList();
-
-        this.containerEl.appendChild(this.emailList.element);
-
-        this.inputEl = document.createElement('input');
-        this.inputEl.classList.add('email-add-more');
-        this.inputEl.setAttribute('type', 'email');
-        this.inputEl.setAttribute('placeholder', 'add more people');
-
-        this.containerEl.appendChild(this.inputEl);
-
-        return this.containerEl;
-    }
-
-    addEmail(value: string): void {
-        if (!value) return;
-
-        const emails = value.split(',');
-
-        emails.forEach((email: string) => {
-            this.emailList.addEmail(email.trim());
-        });
-
-        this.inputEl.value = '';
-    }
-
-    getEmailsCount(): number {
-        return this.emailList.getEmailsCount();
-    }
-
     private onContainerClick(e: MouseEvent): void {
-        if (e.target === this.containerEl) {
+        if (e.target === this.element) {
             this.inputEl.focus();
         }
     }
@@ -74,12 +42,46 @@ class EmailsInput {
         });
     }
 
-    private subscribe(): void {
+    getEmailsCount(): number {
+        return this.emailList.getEmailsCount();
+    }
+
+    addEmail(value: string): void {
+        if (!value) return;
+
+        const emails = value.split(',');
+
+        emails.forEach((email: string) => {
+            this.emailList.addEmail(email.trim());
+        });
+
+        this.inputEl.value = '';
+    }
+
+    render(): HTMLElement {
+        this.element = document.createElement('div');
+        this.element.classList.add(CONTAINER_CLASSNAME);
+
+        this.emailList = new EmailList();
+
+        this.element.appendChild(this.emailList.element);
+
+        this.inputEl = document.createElement('input');
+        this.inputEl.classList.add('email-add-more');
+        this.inputEl.setAttribute('type', 'email');
+        this.inputEl.setAttribute('placeholder', 'add more people');
+
+        this.element.appendChild(this.inputEl);
+
+        return this.element;
+    }
+
+    subscribe(): void {
         this.inputEl.addEventListener('keyup', this.onKeyup.bind(this));
         this.inputEl.addEventListener('blur', this.onBlur.bind(this));
         this.inputEl.addEventListener('paste', this.onPaste.bind(this));
 
-        this.containerEl.addEventListener(
+        this.element.addEventListener(
             'click',
             this.onContainerClick.bind(this),
         );
