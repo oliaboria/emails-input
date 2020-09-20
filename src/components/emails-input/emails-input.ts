@@ -68,7 +68,7 @@ class EmailsInput {
         this.addEmail(this.inputEl.value);
     }
 
-    private onPaste(e: any): void {
+    private onPaste(): void {
         setTimeout(() => {
             this.addEmail(this.inputEl.value);
         });
