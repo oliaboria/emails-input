@@ -1,0 +1,31 @@
+@import '../../../assets/styles/typography';
+@import '../../../assets/styles/colors';
+
+.email-list-item {
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 4px;
+
+    &.valid {
+        padding: 0 8px;
+        background-color: $color-blue-100;
+        border-radius: 100px;
+    }
+
+    &.invalid {
+        border-bottom: 1px dashed $color-red-500;
+    }
+
+    .email {
+        padding-right: 5px;
+    }
+
+    .icon-remove {
+        cursor: pointer;
+
+        &:before {
+            color: $color-blue-700;
+            content: 'x';
+        }
+    }
+}

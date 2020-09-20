@@ -1,7 +1,10 @@
 import IComponent from '../../types';
 import EmailList from '../email-list';
 
+import styles from './_emails-input.scss';
+
 const CONTAINER_CLASSNAME = 'emails-input';
+const ADD_MORE_CLASSNAME = 'email-add-more';
 
 class EmailsInput implements IComponent {
     private root: HTMLElement;
@@ -60,14 +63,14 @@ class EmailsInput implements IComponent {
 
     render(): HTMLElement {
         this.element = document.createElement('div');
-        this.element.classList.add(CONTAINER_CLASSNAME);
+        this.element.classList.add(styles[CONTAINER_CLASSNAME]);
 
         this.emailList = new EmailList();
 
         this.element.appendChild(this.emailList.element);
 
         this.inputEl = document.createElement('input');
-        this.inputEl.classList.add('email-add-more');
+        this.inputEl.classList.add(styles[ADD_MORE_CLASSNAME]);
         this.inputEl.setAttribute('type', 'email');
         this.inputEl.setAttribute('placeholder', 'add more people');
 

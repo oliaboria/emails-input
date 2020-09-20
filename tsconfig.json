@@ -10,7 +10,7 @@
         "lib": ["dom", "es5", "es2015"],
         "baseUrl": ".",
         "traceResolution": false,
-        "declaration": true,
+        "declaration": true
     },
     "include": ["src"]
 }

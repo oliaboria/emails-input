@@ -1,3 +1,6 @@
+@import '../../../assets/styles/typography';
+@import '../../../assets/styles/colors';
+
 .emails-input {
     @include regular-text;
 
@@ -7,30 +10,6 @@
     background-color: $white;
     border: 1px solid $color-gray-400;
     border-radius: 4px;
-
-    .email-list-item {
-        display: inline-block;
-        margin-right: 8px;
-        margin-bottom: 4px;
-
-        &.valid {
-            padding: 0 8px;
-            background-color: $color-blue-100;
-            border-radius: 100px;
-        }
-
-        &.invalid {
-            border-bottom: 1px dashed $color-red-500;
-        }
-
-        .email {
-            padding-right: 5px;
-        }
-
-        .icon-remove {
-            cursor: pointer;
-        }
-    }
 
     .email-add-more {
         @include regular-text;
