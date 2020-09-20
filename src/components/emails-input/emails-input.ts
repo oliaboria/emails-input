@@ -55,7 +55,7 @@ class EmailsInput {
         }
     }
 
-    private onKeydown(e: KeyboardEvent): void {
+    private onKeyup(e: KeyboardEvent): void {
         if (e.key === ',') {
             const email = this.inputEl.value.slice(0, -1);
             this.addEmail(email);
@@ -75,7 +75,7 @@ class EmailsInput {
     }
 
     private subscribe(): void {
-        this.inputEl.addEventListener('keyup', this.onKeydown.bind(this));
+        this.inputEl.addEventListener('keyup', this.onKeyup.bind(this));
         this.inputEl.addEventListener('blur', this.onBlur.bind(this));
         this.inputEl.addEventListener('paste', this.onPaste.bind(this));
 
