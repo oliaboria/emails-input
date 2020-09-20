@@ -13,6 +13,7 @@ const CONFIG = {
         path: PATH_DIST,
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
+        libraryTarget: 'umd',
     },
 
     resolve: {
