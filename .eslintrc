@@ -42,7 +42,11 @@
                 }
             }
         ],
-        "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+        "lines-between-class-members": [
+            "error",
+            "always",
+            { "exceptAfterSingleLine": true }
+        ],
         "prettier/prettier": ["error"]
     },
     "overrides": [

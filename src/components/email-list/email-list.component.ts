@@ -1,8 +1,9 @@
+import IComponent from '../../types';
 import EmailListItem from '../email-list-item';
 
 const REMOVE_CLASSNAME = 'icon-remove';
 
-class EmailList {
+class EmailList implements IComponent {
     element: HTMLElement;
 
     constructor() {
@@ -11,8 +12,16 @@ class EmailList {
         this.subscribe();
     }
 
+    private removeEmail(e: MouseEvent): void {
+        const target = e.target as Element;
+
+        if (target.classList.contains(REMOVE_CLASSNAME)) {
+            this.element.removeChild(target.parentNode);
+        }
+    }
+
     // eslint-disable-next-line class-methods-use-this
-    private render(): HTMLElement {
+    render(): HTMLElement {
         const el = document.createElement('span');
 
         return el;
@@ -28,15 +37,7 @@ class EmailList {
         return this.element.children.length;
     }
 
-    private removeEmail(e: MouseEvent): void {
-        const target = e.target as Element;
-
-        if (target.classList.contains(REMOVE_CLASSNAME)) {
-            this.element.removeChild(target.parentNode);
-        }
-    }
-
-    private subscribe(): void {
+    subscribe(): void {
         this.element.addEventListener('click', this.removeEmail.bind(this));
     }
 }

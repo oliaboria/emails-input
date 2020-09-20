@@ -8,7 +8,7 @@
     font-family: 'Iconmoon';
     font-style: normal;
     font-display: block;
-    src: url('../fonts/icomoon.ttf') format('truetype');
+    src: url('../fonts/icomoon.ttf') format('ttf');
 }
 
 [class^='icon-'],
@@ -16,12 +16,12 @@
     /* use !important to prevent issues with browser extensions that change fonts */
     display: inline-block;
     font-weight: normal;
-    font-size: 8px;
+    font-size: 15px;
     font-family: 'Iconmoon', sans-serif !important;
     speak: never;
     font-style: normal;
     font-variant: normal;
-    line-height: 8px;
+    line-height: 15px;
     text-transform: none;
 
     &::before {
@@ -31,11 +31,4 @@
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-remove {
-    &:before {
-        color: $color-blue-700;
-        content: '\e900';
-    }
 }
