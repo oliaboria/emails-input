@@ -68,9 +68,16 @@ class EmailsInput {
         this.addEmail(this.inputEl.value);
     }
 
+    private onPaste(e: any): void {
+        setTimeout(() => {
+            this.addEmail(this.inputEl.value);
+        });
+    }
+
     private subscribe(): void {
         this.inputEl.addEventListener('keyup', this.onKeydown.bind(this));
         this.inputEl.addEventListener('blur', this.onBlur.bind(this));
+        this.inputEl.addEventListener('paste', this.onPaste.bind(this));
 
         this.containerEl.addEventListener(
             'click',
