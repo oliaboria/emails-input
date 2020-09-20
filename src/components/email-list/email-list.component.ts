@@ -1,5 +1,6 @@
 import IComponent from '../../types';
 import EmailListItem from '../email-list-item';
+import styles from '../email-list-item/_email-list-item.scss';
 
 const REMOVE_CLASSNAME = 'icon-remove';
 
@@ -15,7 +16,7 @@ class EmailList implements IComponent {
     private removeEmail(e: MouseEvent): void {
         const target = e.target as Element;
 
-        if (target.classList.contains(REMOVE_CLASSNAME)) {
+        if (target.classList.contains(styles[REMOVE_CLASSNAME])) {
             this.element.removeChild(target.parentNode);
         }
     }

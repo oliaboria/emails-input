@@ -123,7 +123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "2d1f09af6e7dcc180edd";
+/******/ 	var hotCurrentHash = "a60de3d5bd269c89db17";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1290,6 +1290,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var email_list_item_1 = __importDefault(__webpack_require__(/*! ../email-list-item */ "./src/components/email-list-item/index.ts"));
+var _email_list_item_scss_1 = __importDefault(__webpack_require__(/*! ../email-list-item/_email-list-item.scss */ "./src/components/email-list-item/_email-list-item.scss"));
 var REMOVE_CLASSNAME = 'icon-remove';
 var EmailList = /** @class */ (function () {
     function EmailList() {
@@ -1298,7 +1299,7 @@ var EmailList = /** @class */ (function () {
     }
     EmailList.prototype.removeEmail = function (e) {
         var target = e.target;
-        if (target.classList.contains(REMOVE_CLASSNAME)) {
+        if (target.classList.contains(_email_list_item_scss_1.default[REMOVE_CLASSNAME])) {
             this.element.removeChild(target.parentNode);
         }
     };
