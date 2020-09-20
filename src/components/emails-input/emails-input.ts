@@ -33,11 +33,20 @@ class EmailsInput {
         return this.containerEl;
     }
 
-    private addEmail(value: string): void {
+    addEmail(value: string): void {
         if (!value) return;
 
-        this.emailList.addEmail(value);
+        const emails = value.split(',');
+
+        emails.forEach((email: string) => {
+            this.emailList.addEmail(email.trim());
+        });
+
         this.inputEl.value = '';
+    }
+
+    getEmailsCount(): number {
+        return this.emailList.getEmailsCount();
     }
 
     private onContainerClick(e: MouseEvent): void {
@@ -46,7 +55,7 @@ class EmailsInput {
         }
     }
 
-    private onKeydown(e: KeyboardEvent): void {
+    private onKeyup(e: KeyboardEvent): void {
         if (e.key === ',') {
             const email = this.inputEl.value.slice(0, -1);
             this.addEmail(email);
@@ -59,9 +68,16 @@ class EmailsInput {
         this.addEmail(this.inputEl.value);
     }
 
+    private onPaste(): void {
+        setTimeout(() => {
+            this.addEmail(this.inputEl.value);
+        });
+    }
+
     private subscribe(): void {
-        this.inputEl.addEventListener('keyup', this.onKeydown.bind(this));
+        this.inputEl.addEventListener('keyup', this.onKeyup.bind(this));
         this.inputEl.addEventListener('blur', this.onBlur.bind(this));
+        this.inputEl.addEventListener('paste', this.onPaste.bind(this));
 
         this.containerEl.addEventListener(
             'click',
