@@ -36,7 +36,12 @@ class EmailsInput {
     addEmail(value: string): void {
         if (!value) return;
 
-        this.emailList.addEmail(value);
+        const emails = value.split(',');
+
+        emails.forEach((email: string) => {
+            this.emailList.addEmail(email.trim());
+        });
+
         this.inputEl.value = '';
     }
 
