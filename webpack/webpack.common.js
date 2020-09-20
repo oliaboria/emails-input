@@ -1,7 +1,6 @@
 const { join } = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATH_DIST = join(__dirname, '../dist');
 
@@ -12,8 +11,8 @@ const CONFIG = {
 
     output: {
         path: PATH_DIST,
-        filename: '[name].[hash:8].bundle.js',
-        chunkFilename: '[name].[hash:8].chunk.js',
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].chunk.js',
     },
 
     resolve: {
@@ -34,11 +33,6 @@ const CONFIG = {
     },
 
     plugins: [
-        new HtmlWebpackPlugin({
-            template: 'src/index.html',
-            inject: 'body',
-            filename: 'index.html',
-        }),
         new CleanWebpackPlugin({
             verbose: true,
         }),

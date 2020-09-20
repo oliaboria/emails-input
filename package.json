@@ -2,7 +2,8 @@
     "name": "emails-input",
     "version": "1.0.0",
     "description": "Package provides input for multiple emails",
-    "main": "src/index.ts",
+    "main": "dist/index.bundle.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "start": "webpack-dev-server --config=./webpack/webpack.dev.js",
         "build:dev": "webpack --config=./webpack/webpack.dev.js",
@@ -10,7 +11,8 @@
         "lint": "eslint \"./**/*.{ts,js}\"",
         "lint:style": "stylelint \"./**/*.{css,scss}\"",
         "format": "prettier --write \"./**/*.*\"",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prepare": "npm run build:prod"
     },
     "repository": {
         "type": "git",
@@ -36,7 +38,6 @@
         "eslint-plugin-prettier": "^3.1.4",
         "file-loader": "^6.1.0",
         "html-webpack-injector": "^1.1.4",
-        "html-webpack-plugin": "^4.4.1",
         "husky": "^4.3.0",
         "lint-staged": "^10.3.0",
         "mini-css-extract-plugin": "^0.11.2",
