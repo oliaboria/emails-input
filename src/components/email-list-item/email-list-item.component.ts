@@ -15,9 +15,10 @@ class EmailListItem implements IComponent {
         this.element = this.render();
     }
 
+    // eslint-disable-next-line class-methods-use-this
     private markup(): string {
         return `
-            <span class="email">${this.email}</span>
+            <span class="email"></span>
             <span class="icon-remove"></span>
         `;
     }
@@ -32,6 +33,9 @@ class EmailListItem implements IComponent {
         el.classList.add(validationClass);
 
         el.innerHTML = this.markup();
+
+        const emailEl: HTMLElement = el.querySelector('.email');
+        emailEl.innerText = this.email;
 
         return el;
     }
